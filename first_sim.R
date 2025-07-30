@@ -6,8 +6,52 @@ library(shinyanimate)
 library(shinyjs)      # autoplay helper
 library(rclipboard)   # copy‑to‑clipboard button
 
-# -------------------- Beginner‑friendly deSolve example --------------------
-code_snippet <- "## First steps with deSolve: a constant inflow–outflow model\n\n# 1) Load the ODE solver package\nlibrary(deSolve)\n\n# 2) Set the parameters you can play with\nN0         <- 50   # initial population size\nbirth_rate <- 1    # births per time‑unit (constant)\ndeath_rate <- 0    # deaths per time‑unit (constant)\n\n# 3) Write the differential equation dN/dt = births − deaths\nstock_model <- function(t, state, parms){\n  with(as.list(c(state, parms)), {\n    dN <- birth_rate - death_rate  # derivative\n    list(dN)                       # deSolve expects a list\n  })\n}\n\n# 4) Choose the time points where you want the solution\ntimes <- 0:50   # shorthand for seq(0, 50, by = 1)\n\n# 5) Pack the initial state and parameters into named vectors\nstate <- c(N = N0)\nparms <- c(birth_rate = birth_rate, death_rate = death_rate)\n\n# 6) Integrate the ODE\nout <- ode(y = state, times = times, func = stock_model, parms = parms) |>\n       as.data.frame()\n\n# 7) Plot the trajectory\nplot(out$time, out$N, type = 'l',\n     xlab = 'Time', ylab = 'Population (N)')"  
+# ---------- pedagogic snippet shown in the R Code tab -----------------------
+code_snippet <- "
+## Simulating a constant inflow–outflow model in base R
+## (Simply copy-paste this code into a new R script)
+##
+## Why an ODE?
+## An ordinary differential equation (ODE) describes how a state
+## variable changes continuously over time. Here the population size N
+## changes according to two constant rates:
+##   dN/dt = births - deaths
+## The package *deSolve* integrates this ODE numerically so that we can
+## plot N(t) without doing the calculus by hand.
+
+# 1) Load the ODE solver package
+library(deSolve)
+
+# 2) Define the parameters for the simulation
+N0         <- 50   # initial population size
+birth_rate <- 1    # births per time‑unit (constant inflow)
+death_rate <- 0    # deaths per time‑unit (constant outflow)
+
+# 3) Write the ODE: dN/dt = births − deaths
+stock_model <- function(t, state, parms){
+  with(as.list(c(state, parms)), {
+    dN <- birth_rate - death_rate   # derivative
+    list(dN)                        # deSolve expects a list
+  })
+}
+
+# 4) Choose the time points where the numerical solution is needed
+times <- 0:50    # equivalent to seq(0, 50, by = 1)
+
+# 5) Pack initial state and parameters into named vectors
+state <- c(N = N0)
+parms <- c(birth_rate = birth_rate,
+           death_rate = death_rate)
+
+# 6) Integrate the ODE
+out <- ode(y = state, times = times,
+           func = stock_model, parms = parms) |>
+       as.data.frame()
+
+# 7) Plot the trajectory
+plot(out$time, out$N, type = 'l',
+     xlab = 'Time', ylab = 'Population (N)')
+"
 # ---------------------------------------------------------------------------
 
 ui <- fluidPage(
@@ -30,11 +74,45 @@ ui <- fluidPage(
     
     mainPanel(
       tabsetPanel(
-        tabPanel("Simulation", highchartOutput("popChart", height = "500px")),
+        tabPanel("Simulation",
+                 highchartOutput("popChart", height = "500px")),
+        
+        # ----------- Help tab -------------------------------------------------
+        tabPanel("Help",
+                 tags$h4("Paramètres"),
+                 tags$style(".param {margin-bottom: 6px;}"),
+                 tags$dl(
+                   tags$div(class = "param",
+                            tags$dt(tags$code("N₀")),
+                            tags$dd("Population initiale au temps 0.")
+                   ),
+                   tags$div(class = "param",
+                            tags$dt(tags$code("Births per unit time")),
+                            tags$dd("Flux constant d’entrées (naissances ou immigration).")
+                   ),
+                   tags$div(class = "param",
+                            tags$dt(tags$code("Deaths per unit time")),
+                            tags$dd("Flux constant de sorties (mortalité ou émigration).")
+                   ),
+                   tags$div(class = "param",
+                            tags$dt(tags$code("Simulation time")),
+                            tags$dd("Durée totale de la simulation (unités entières).")
+                   )
+                 ),
+                 tags$p(
+                   tags$strong("Run Simulation :"),
+                   "calcule toute la trajectoire avec les valeurs sélectionnées, ",
+                   "met à jour la durée maximale du curseur « Time », puis lance automatiquement ",
+                   "l’animation du graphique."
+                 )
+        ),
+        # ---------------------------------------------------------------------
+        
         tabPanel("R Code",
                  rclipButton("copy_code", "Copy code", clipText = code_snippet,
                              icon = icon("clipboard")),
-                 tags$pre(style = "white-space:pre-wrap; word-wrap:break-word;", code_snippet)
+                 tags$pre(style = "white-space:pre-wrap; word-wrap:break-word;",
+                          code_snippet)
         )
       )
     )
@@ -42,15 +120,14 @@ ui <- fluidPage(
   tags$style(".slider-animate-button{visibility:hidden;}")
 )
 
-# --------------------------------- model -----------------------------------
+# --------------------------------- ODE model --------------------------------
 stock_model <- function(time, state, parms){
   with(as.list(c(state, parms)), list(birth_const - death_const))
 }
 
-# -------------------------------- server -----------------------------------
+# --------------------------------- server -----------------------------------
 server <- function(input, output, session){
   
-  # compute trajectory when button pressed
   traj_df <- eventReactive(input$run, {
     parms <- c(birth_const = input$birth_const,
                death_const  = input$death_const)
@@ -58,40 +135,42 @@ server <- function(input, output, session){
     times <- seq(0, input$tmax, 1)
     df <- as.data.frame(ode(state, times, stock_model, parms))
     
-    # reset slider
-    updateSliderInput(session, "time_slider", value = 0, min = 0, max = input$tmax)
+    updateSliderInput(session, "time_slider",
+                      value = 0, min = 0, max = input$tmax)
     
-    # autoplay: click the (hidden) play button after DOM update
-    runjs("setTimeout(function(){ var b=document.querySelector('.slider-animate-button'); if(b) b.click(); }, 400);")
-    
+    # autoplay
+    runjs("setTimeout(function(){
+             var b=document.querySelector('.slider-animate-button');
+             if(b) b.click();
+           }, 400);")
     df
   })
   
-  # initial empty chart
   output$popChart <- renderHighchart({
     highchart() %>%
       hc_chart(type = "line", animation = FALSE) %>%
       hc_plotOptions(series = list(animation = list(duration = 0))) %>%
       hc_title(text = "Population vs Time") %>%
-      hc_xAxis(title = list(text = "Time"), min = 0, max = input$tmax) %>%
+      hc_xAxis(title = list(text = "Time"),
+               min = 0, max = input$tmax) %>%
       hc_yAxis(title = list(text = "Population (N)")) %>%
-      hc_add_series(id = "line_series", data = list(), name = "N", marker = list(enabled = FALSE))
+      hc_add_series(id = "line_series", data = list(),
+                    name = "N", marker = list(enabled = FALSE))
   })
   
-  # update y‑axis after each run
   observeEvent(traj_df(), {
     highchartProxy("popChart") %>%
       hcpxy_update(yAxis = list(max = max(traj_df()$N)))
   })
   
-  # animate line as slider moves
   observeEvent(input$time_slider, {
     df <- traj_df(); req(df)
     pts <- Map(function(x, y) list(x = x, y = y),
                df$time[df$time <= input$time_slider],
                df$N[df$time <= input$time_slider])
     highchartProxy("popChart") %>%
-      hcpxy_update_series(id = "line_series", data = pts, animation = FALSE)
+      hcpxy_update_series(id = "line_series",
+                          data = pts, animation = FALSE)
   })
 }
 
