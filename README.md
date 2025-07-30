@@ -5,6 +5,12 @@ Suivez les étapes ci‑dessous pour exécuter l’app en local avec **RStudio**
 
 ---
 
+## 0. Prérequis
+
+1. Avoir R installé (version >4.3.3 conseillé) ▸ https://cran.r-project.org/
+
+2. Avoir RStudio installé ▸ https://posit.co/download/rstudio-desktop/
+
 ## 1. Créer un nouveau projet RStudio depuis GitHub
 
 1. **File ▸ New Project…**  
