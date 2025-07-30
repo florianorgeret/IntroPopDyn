@@ -28,6 +28,14 @@ renv::activate()              # active la bibliothèque du projet
 renv::restore()               # installe les versions de packages listées dans renv.lock
 ```
 
+Et à la question :
+
+```console
+Do you want to proceed? [Y/n]
+```
+
+il suffit de taper `Y`
+
 L'installation de tous les packages peut alors prendre plusieurs minutes, mais unique pour la première fois...
 
 ## 3 Lancer l’application Shiny
