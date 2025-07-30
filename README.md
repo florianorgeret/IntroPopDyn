@@ -24,6 +24,7 @@ Dans l’onglet **Console** :
 
 ```r
 install.packages("renv")      # une seule fois sur votre machine
+renv::activate()              # active la bibliothèque du projet
 renv::restore()               # installe les versions de packages listées dans renv.lock
 ```
 
