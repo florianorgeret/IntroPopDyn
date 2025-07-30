@@ -5,7 +5,7 @@ Suivez les étapes ci‑dessous pour exécuter l’app en local avec **RStudio**
 
 ---
 
-## 1 Créer un nouveau projet RStudio depuis GitHub
+## 1. Créer un nouveau projet RStudio depuis GitHub
 
 1. **File ▸ New Project…**  
 
@@ -18,7 +18,7 @@ RStudio ouvre automatiquement le projet.
 
 ---
 
-## 2 Restaurer l’environnement de travail (packages)
+## 2. Restaurer l’environnement de travail (packages)
 
 Dans l’onglet **Console** :
 
@@ -38,7 +38,7 @@ il suffit de taper `Y`
 
 L'installation de tous les packages peut alors prendre plusieurs minutes, mais unique pour la première fois...
 
-## 3 Lancer l’application Shiny
+## 3. Lancer l’application Shiny
 
 ```r
 shiny::runApp("first_sim.R")
