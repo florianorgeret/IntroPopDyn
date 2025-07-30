@@ -27,7 +27,7 @@ install.packages("renv")      # une seule fois sur votre machine
 renv::restore()               # installe les versions de packages listées dans renv.lock
 ```
 
-L'installation peut alors prendre plusieurs minutes, mais que pour la première fois...
+L'installation de tous les packages peut alors prendre plusieurs minutes, mais uniquement pour la première fois...
 
 ## 3 Lancer l’application Shiny
 
