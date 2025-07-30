@@ -24,7 +24,11 @@ Dans l’onglet **Console** :
 
 ```r
 install.packages("renv")      # une seule fois sur votre machine
+```
+```r
 renv::activate()              # active la bibliothèque du projet
+```
+```r
 renv::restore()               # installe les versions de packages listées dans renv.lock
 ```
 
@@ -36,7 +40,7 @@ Do you want to proceed? [Y/n]
 
 il suffit de taper `Y`
 
-L'installation de tous les packages peut alors prendre plusieurs minutes, mais unique pour la première fois...
+L'installation de tous les packages peut alors prendre plusieurs minutes (<5 min), mais uniquement pour la première fois...
 
 ## 3. Lancer l’application Shiny
 
