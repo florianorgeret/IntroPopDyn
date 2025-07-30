@@ -1,4 +1,4 @@
-# IntroPopDyn
+# Apps pour le cours d'introduction a la dynamique des populations
 
 Ce dépôt contient une application **Shiny** d’introduction à la dynamique des populations (`first_sim.R`).  
 Suivez les étapes ci‑dessous pour exécuter l’app en local avec **RStudio**.
@@ -27,7 +27,7 @@ install.packages("renv")      # une seule fois sur votre machine
 renv::restore()               # installe les versions de packages listées dans renv.lock
 ```
 
-L'installation de tous les packages peut alors prendre plusieurs minutes, mais uniquement pour la première fois...
+L'installation de tous les packages peut alors prendre plusieurs minutes, mais unique pour la première fois...
 
 ## 3 Lancer l’application Shiny
 
