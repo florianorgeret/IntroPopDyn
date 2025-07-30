@@ -26,7 +26,7 @@ RStudio ouvre automatiquement le projet.
 
 ## 2. Restaurer l’environnement de travail (packages)
 
-Dans l’onglet **Console** :
+Dans l’onglet **Console** (lancer les lignes de commande une par une en tapant `Entrée` <kbd>↵</kbd> à chaque fois) :
 
 ```r
 install.packages("renv")      # une seule fois sur votre machine
