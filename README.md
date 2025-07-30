@@ -38,7 +38,7 @@ Et à la question :
 Do you want to proceed? [Y/n]
 ```
 
-il suffit de taper `Y`
+il suffit de taper <kbd>Y</kbd> et la touche `Entrée` <kbd>↵</kbd> 
 
 L'installation de tous les packages peut alors prendre plusieurs minutes (<5 min), mais uniquement pour la première fois...
 
