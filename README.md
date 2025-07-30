@@ -1,4 +1,4 @@
-# Apps pour le cours d'introduction à la dynamique des populations
+# Apps pour le cours d'introduction à la dynamique des populations et des communautés
 
 Ce dépôt contient une application **Shiny** d’introduction à la dynamique des populations (`first_sim.R`).  
 Suivez les étapes ci‑dessous pour exécuter l’app en local avec **RStudio**.
