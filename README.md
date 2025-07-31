@@ -15,7 +15,7 @@ Suivez les étapes ci‑dessous pour exécuter une app en local avec **RStudio**
 ## 1. Télécharger l’archive ZIP du dépot
 
 1. Sur la page GitHub: <https://github.com/florianorgeret/IntroPopDyn>
-2. Cliquez sur le bouton vert **\<\> Code** puis **Download ZIP**.  
+2. Cliquez sur le bouton vert **\<\> Code** (en haut à droite) puis cliquer sur **Download ZIP**.  
 2. Décompressez l’archive dans le dossier de votre choix (par ex. `Documents/IntroPopDyn`).  
 3. Charger **IntroPopDyn.Rproj** dans le dossier décompressé.     
   
@@ -37,7 +37,7 @@ Suivez les étapes ci‑dessous pour exécuter une app en local avec **RStudio**
 
 ## 2. Lancer une des applications
 
-Directement dans l’onglet **Console** ou dans un nouveau **Script** et lancer les commandes avec `CTRL`+ `ENTER`:
+Directement dans l’onglet **Console** (ou dans un nouveau **Script** en lançant les commandes avec `CTRL`+ `ENTER`):
 
 ```r
 # pour la version “flux constants”
