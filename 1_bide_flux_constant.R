@@ -44,7 +44,7 @@ ui <- fluidPage(
       tags$div(style = "text-align:center; margin:20px 0;",
                actionButton("run", "Run Simulation")),
       sliderInput("time_slider", "Time", min = 0, max = 0, value = 0, step = 1,
-                  animate = animationOptions(interval = 40, loop = FALSE))
+                  animate = animationOptions(interval = 20, loop = FALSE))
     ),
     
     mainPanel(
