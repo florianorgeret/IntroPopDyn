@@ -48,10 +48,10 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       sliderInput("N0", "Initial population N₀", 0, 500, 50),
-      sliderInput("b",  "Birth rate (b)", 0, .2, 0.05, step = .005),
-      sliderInput("i",  "Immigration rate (i)", 0, .1, 0, step = .005),
-      sliderInput("d",  "Death rate (d)", 0, .2, 0.01, step = .005),
-      sliderInput("e",  "Emigration rate (e)", 0, .1, 0, step = .005),
+      sliderInput("b", "Birth rate (b)", 0, 0.5, 0.05, step = .01),
+      sliderInput("i", "Immigration rate (i)", 0, 0.3, 0,    step = .01),
+      sliderInput("d", "Death rate (d)", 0, 0.5, 0.01, step = .01),
+      sliderInput("e", "Emigration rate (e)", 0, 0.3, 0,    step = .01),
       sliderInput("tmax", "Number of time steps", 1, 200, 50),
       checkboxInput("animate_continuous", "Continuous version (ODE)", value = FALSE),
       tags$div(style = "text-align:center; margin:20px 0;",
