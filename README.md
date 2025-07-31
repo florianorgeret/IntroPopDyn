@@ -12,7 +12,7 @@ Suivez les étapes ci‑dessous pour exécuter une app en local avec **RStudio**
 
 ---
 
-## 1. Télécharger l’archive ZIP du dépot
+## 1. Télécharger l’archive ZIP du dépot (**repository**)
 
 1. Sur la page GitHub: <https://github.com/florianorgeret/IntroPopDyn>
 2. Cliquez sur le bouton vert **\<\> Code** (en haut à droite) puis cliquer sur **Download ZIP**.  
