@@ -28,10 +28,14 @@ Suivez les étapes ci‑dessous pour exécuter une app en local avec **RStudio**
    * Linux : gestionnaire de paquets (ex. `sudo apt install git`)
 2. *File ▸ New Project…*  
 3. *Version Control ▸ Git*  
-4. Dans **Repository URL**, collez&nbsp;:  
-   `https://github.com/florianorgeret/IntroPopDyn`  
+4. Dans **Repository URL**, collez :  
+
+```console
+https://github.com/florianorgeret/IntroPopDyn`  
+```
+
 5. Choisissez un dossier local puis **Create Project**.  
-   RStudio ouvre automatiquement le projet.
+6. RStudio ouvre automatiquement le projet.
 
 ---
 
