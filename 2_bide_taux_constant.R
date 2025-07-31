@@ -75,7 +75,7 @@ ui <- fluidPage(
                    tags$div(class="param", tags$dt(code("e")), tags$dd("émigrants par individu et par pas de temps")),
                    tags$div(class="param", tags$dt(code("N₀ / pas de temps")), tags$dd("taille initiale et durée"))
                  ),
-                 tags$p(strong("Taux net :"), "r = b + i - d - e est le taux de croissance par individu résultant de la combinaison des naissances, immigration, décès et émigration."),
+                 tags$p(strong("Taux net :"), code("r = b + i - d - e"), "est le taux de croissance par individu résultant de la combinaison des naissances, immigration, décès et émigration."),
                  tags$p(strong("Modèle discret :"), "la population évolue par sauts à chaque pas de temps (Δt = 1) selon ", code("N[t+1] = N[t] + r * N[t]"), ". C'est une discrétisation explicite de l'évolution continue ; on applique à chaque étape le taux net sur la population actuelle."),
                  tags$p(strong("Modèle continu (ODE) :"), "ODE signifie équation différentielle ordinaire. Ici on écrit ", code("dN/dt = r * N"), ", ce qui correspond à la limite lorsque le pas de temps devient infinitésimal. La trajectoire est lisse et suit une croissance ou décroissance exponentielle. La case à cocher contrôle si la courbe continue se dévoile progressivement (si cochée) ou reste figée à son point initial jusqu'à ce que le curseur avance (si décochée)."),
                  tags$p(strong("Transformée log10 :"), "Il s'agit d'une étape supplémentaire où on prend ", code("log10(N)"), " pour rendre une croissance exponentielle linéaire à visualiser (ceci est aussi reflété en cochant 'Log10 Y-axis')."),
@@ -135,7 +135,7 @@ server <- function(input, output, session){
       hc_xAxis(title=list(text="Time step", style=list(fontSize="15px")), min=0, max=input$tmax) %>%
       hc_yAxis(title=list(text=y_title, style=list(fontSize="15px")),
                type=axis_type, min=yaxis_min, max=yaxis_max) %>%
-      hc_subtitle(text = sprintf("r = %.3f", r_val), style=list(fontSize="22px", fontWeight="700")) %>%
+      hc_subtitle(text = sprintf("r = b + i - d - e = %.3f", r_val), style=list(fontSize="22px", fontWeight="700")) %>%
       hc_add_series(id="discrete", name="Discrete", data=list(list(x=0,y=traj()$discrete$N[1])),
                     dashStyle="Dot", color=blue, marker=list(enabled=FALSE)) %>%
       hc_add_series(id="continuous", name="Continuous (ODE)", data=list(list(x=0,y=traj()$continuous$N[1])),
