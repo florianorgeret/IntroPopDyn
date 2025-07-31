@@ -45,7 +45,7 @@ legend('topleft', bty='n', lty=c(3,1), legend=c('Discrete','Continuous (ODE)'))
 "
 
 ui <- fluidPage(
-  titlePanel("BIDE – per-capita rates simulator"),
+  titlePanel("BIDE – Per-Capita Rates simulator"),
   sidebarLayout(
     sidebarPanel(
       sliderInput("N0","Initial population N0", 0, 500, 50),
