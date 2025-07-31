@@ -1,14 +1,10 @@
-# Minimal dependency-check: install missing packages then load them
+## Self-contained Shiny app for constant-flux BIDE with dashed discrete curve, thicker line and bigger points
 pkgs_needed <- c("shiny", "highcharter", "magrittr",
                  "shinyanimate", "shinyjs", "rclipboard")
-
 to_install <- setdiff(pkgs_needed, rownames(installed.packages()))
 if (length(to_install))
   install.packages(to_install, repos = "https://cloud.r-project.org")
-
 lapply(pkgs_needed, require, character.only = TRUE)
-
-#  BIDE • flux constants • Shiny app
 
 code_snippet <- "
 ## BIDE ultra-simple (flux constants, temps discret)
@@ -26,8 +22,9 @@ for (t in 1:tmax) {
   N[t + 1] <- N[t] + B + I - D - E
 }
 
-plot(0:tmax, N, type = 'l',
+plot(0:tmax, N, type = 'l', lty = 3, lwd = 3,
      xlab = 'Time step', ylab = 'Population (N)')
+points(0:tmax, N, pch = 16, cex = 1.2)
 "
 
 ui <- fluidPage(
@@ -60,28 +57,21 @@ ui <- fluidPage(
                  tags$style(".param {margin-bottom:6px;}"),
                  tags$dl(
                    tags$div(class="param",
-                            tags$dt(tags$code("N₀")), tags$dd("Population initiale."))
-                   ,
+                            tags$dt(tags$code("N₀")), tags$dd("Initial population.")),
                    tags$div(class="param",
-                            tags$dt(tags$code("B")), tags$dd("Naissances ajoutées à chaque pas."))
-                   ,
+                            tags$dt(tags$code("B")), tags$dd("Births added each step.")),
                    tags$div(class="param",
-                            tags$dt(tags$code("I")), tags$dd("Immigration à chaque pas."))
-                   ,
+                            tags$dt(tags$code("I")), tags$dd("Immigration each step.")),
                    tags$div(class="param",
-                            tags$dt(tags$code("D")), tags$dd("Décès soustraits à chaque pas."))
-                   ,
+                            tags$dt(tags$code("D")), tags$dd("Deaths subtracted each step.")),
                    tags$div(class="param",
-                            tags$dt(tags$code("E")), tags$dd("Émigration à chaque pas."))
-                   ,
+                            tags$dt(tags$code("E")), tags$dd("Emigration each step.")),
                    tags$div(class="param",
-                            tags$dt(tags$code("Number of steps")),
-                            tags$dd("Durée de la simulation en pas discrets."))
+                            tags$dt(tags$code("Number of steps")), tags$dd("Duration of the simulation in discrete steps."))
                  ),
                  tags$p(
-                   tags$strong("Run Simulation :"),
-                   "calcule N(t) avec les flux constants, ajuste la plage du curseur « Time », ",
-                   "puis lance automatiquement l’animation."
+                   tags$strong("Run Simulation:"),
+                   "computes N(t) with constant fluxes, adjusts the range of the 'Time' slider, and automatically starts the animation. The discrete trajectory is shown with jumps (dashed line) and highlighted points."
                  )
         ),
         
@@ -118,11 +108,11 @@ server <- function(input, output, session){
   output$popChart <- renderHighchart({
     highchart() %>%
       hc_chart(type = "line", animation = FALSE) %>%
-      hc_title(text = "Population vs Time step") %>%
-      hc_xAxis(title = list(text = "Time step"), min = 0, max = input$tmax) %>%
-      hc_yAxis(title = list(text = "Population (N)")) %>%
+      hc_xAxis(title = list(text = "Time step", style = list(fontSize = "16px")), min = 0, max = input$tmax) %>%
+      hc_yAxis(title = list(text = "Population (N)", style = list(fontSize = "16px"))) %>%
       hc_add_series(id = "line_series", data = list(),
-                    name = "N", marker = list(enabled = FALSE))
+                    name = "Discrete (step)", dashStyle = "Dot", lineWidth = 4,
+                    marker = list(enabled = F, radius = 4))
   })
   
   observeEvent(traj_df(), {
