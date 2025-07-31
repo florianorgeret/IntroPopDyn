@@ -20,7 +20,7 @@ Suivez les étapes ci‑dessous pour exécuter l’app en local avec **RStudio**
 3. Charger **IntroPopDyn.Rproj** dans le dossier décompressé.     
   
 
-### (Alternative avec Git : cloner le dépôt dans un projet RStudio)
+### (Alternative avec Git : cloner directement le dépôt dans un projet RStudio)
 
 1. Installation de **Git** – nécessaire pour cloner le dépôt depuis RStudio  
    * Windows : <https://git-scm.com/download/win>  
