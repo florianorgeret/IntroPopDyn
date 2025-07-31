@@ -1,56 +1,48 @@
 # Apps pour le cours d'introduction à la dynamique des populations et des communautés
 
-Ce dépôt contient une application **Shiny** d’introduction à la dynamique des populations (`first_sim.R`).  
+Ce dépôt contient des applications **Shiny** d’introduction à la dynamique des populations.  
 Suivez les étapes ci‑dessous pour exécuter l’app en local avec **RStudio**.
 
 ---
 
 ## 0. Prérequis
 
-1. Avoir R installé (version >4.3.3 conseillé) ▸ https://cran.r-project.org/
-
-2. Avoir RStudio installé ▸ https://posit.co/download/rstudio-desktop/
-
-## 1. Créer un nouveau projet RStudio depuis GitHub
-
-1. **File ▸ New Project…**  
-
-2. **Version Control ▸ Git**  
-
-3. Dans *Repository URL* collez :  https://github.com/florianorgeret/IntroPopDyn
-
-4. Choisissez le dossier où cloner le dépôt, puis **Create Project**.  
-RStudio ouvre automatiquement le projet.
+1. Installer **R** (≥ 4.3.3) → <https://cran.r-project.org>  
+2. Installer **RStudio Desktop** → <https://posit.co/download/rstudio-desktop/>
 
 ---
 
-## 2. Restaurer l’environnement de travail (packages)
+## 1. Télécharger l’archive ZIP du dépot
 
-Dans l’onglet **Console** (lancer les lignes de commande une par une en tapant `Entrée` <kbd>↵</kbd> à chaque fois) :
+1. Sur la page GitHub: <https://github.com/florianorgeret/IntroPopDyn>
+2. Cliquez sur le bouton vert **\<\> Code** puis **Download ZIP**.  
+2. Décompressez l’archive dans le dossier de votre choix (par ex. `Documents/IntroPopDyn`).  
+3. Charger **IntroPopDyn.Rproj** dans le dossier décompressé.     
+  
+---
+## 1. Alternative avec Git: cloner le dépôt dans un projet RStudio
+
+1. Installation de **Git** – nécessaire pour cloner le dépôt depuis RStudio  
+   * Windows : <https://git-scm.com/download/win>  
+   * macOS  : `brew install git` ou installeur <https://git-scm.com/download/mac>  
+   * Linux : gestionnaire de paquets (ex. `sudo apt install git`)
+2. *File ▸ New Project…*  
+3. *Version Control ▸ Git*  
+4. Dans **Repository URL**, collez&nbsp;:  
+   `https://github.com/florianorgeret/IntroPopDyn`  
+5. Choisissez un dossier local puis **Create Project**.  
+   RStudio ouvre automatiquement le projet.
+
+---
+
+## 2. Lancer une des applications
+
+Directment ans l’onglet **Console** ou dans un nouveau **Script**:
 
 ```r
-install.packages("renv")      # une seule fois sur votre machine
+# pour la version “flux constants”
+shiny::runApp("1_bide_flux_constant.R")
+
+# pour la version “taux constants”
+shiny::runApp("2_bide_taux_constant.R")
 ```
-```r
-renv::activate()              # active la bibliothèque du projet
-```
-```r
-renv::restore()               # installe les versions de packages listées dans renv.lock
-```
-
-Et à la question :
-
-```console
-Do you want to proceed? [Y/n]
-```
-=> il suffit de taper <kbd>Y</kbd> dans la console et de lancer les installations avec la touche `Entrée` <kbd>↵</kbd> 
-
-L'installation de tous les packages peut alors prendre plusieurs minutes (<5 min), mais uniquement pour la première fois...
-
-## 3. Lancer l’application Shiny
-
-```r
-shiny::runApp("first_sim.R")
-```
-
-Un onglet s’ouvre alors dans votre navigateur (ou le panneau Viewer) avec l’interface interactive.
