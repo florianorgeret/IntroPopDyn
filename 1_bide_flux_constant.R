@@ -53,25 +53,25 @@ ui <- fluidPage(
                  highchartOutput("popChart", height = "500px")),
         
         tabPanel("Help",
-                 tags$h4("Parameters"),
+                 tags$h4("Paramètres"),
                  tags$style(".param {margin-bottom:6px;}"),
                  tags$dl(
-                   tags$div(class="param",
-                            tags$dt(tags$code("N₀")), tags$dd("Initial population.")),
-                   tags$div(class="param",
-                            tags$dt(tags$code("B")), tags$dd("Births added each step.")),
-                   tags$div(class="param",
-                            tags$dt(tags$code("I")), tags$dd("Immigration each step.")),
-                   tags$div(class="param",
-                            tags$dt(tags$code("D")), tags$dd("Deaths subtracted each step.")),
-                   tags$div(class="param",
-                            tags$dt(tags$code("E")), tags$dd("Emigration each step.")),
-                   tags$div(class="param",
-                            tags$dt(tags$code("Number of steps")), tags$dd("Duration of the simulation in discrete steps."))
+                   tags$div(class = "param",
+                            tags$dt(tags$code("N₀")), tags$dd("Population initiale au début de la simulation.")),
+                   tags$div(class = "param",
+                            tags$dt(tags$code("B")), tags$dd("Naissances ajoutées à chaque pas de temps.")),
+                   tags$div(class = "param",
+                            tags$dt(tags$code("I")), tags$dd("Individus immigrés à chaque pas de temps.")),
+                   tags$div(class = "param",
+                            tags$dt(tags$code("D")), tags$dd("Décès retirés à chaque pas de temps.")),
+                   tags$div(class = "param",
+                            tags$dt(tags$code("E")), tags$dd("Émigrants retirés à chaque pas de temps.")),
+                   tags$div(class = "param",
+                            tags$dt(tags$code("Number of steps")), tags$dd("Durée totale de la simulation en pas discrets."))
                  ),
                  tags$p(
-                   tags$strong("Run Simulation:"),
-                   "computes N(t) with constant fluxes, adjusts the range of the 'Time' slider, and automatically starts the animation. The discrete trajectory is shown with jumps (dashed line) and highlighted points."
+                   tags$strong("Run Simulation :"),
+                   "calcule N(t) en appliquant des flux constants, ajuste la plage du curseur « Time » puis lance automatiquement l’animation"
                  )
         ),
         

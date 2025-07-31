@@ -1,6 +1,4 @@
-## Self-contained Shiny app with explicit r = B + I - D - E, discrete dotted, continuous solid,
-## French help content, English UI and R code, r on graph rounded to 2 decimals,
-## continuous (ODE) curve animated only if checkbox is checked, both curves same blue
+
 pkgs_needed <- c("shiny", "highcharter", "magrittr",
                  "shinyanimate", "shinyjs", "rclipboard", "deSolve")
 to_install  <- setdiff(pkgs_needed, rownames(installed.packages()))
