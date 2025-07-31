@@ -1,7 +1,7 @@
 # Apps pour le cours d'introduction à la dynamique des populations et des communautés
 
 Ce dépôt contient des applications **Shiny** d’introduction à la dynamique des populations.  
-Suivez les étapes ci‑dessous pour exécuter l’app en local avec **RStudio**.
+Suivez les étapes ci‑dessous pour exécuter une app en local avec **RStudio**.
 
 ---
 
