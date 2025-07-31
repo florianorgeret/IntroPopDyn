@@ -19,8 +19,8 @@ Suivez les étapes ci‑dessous pour exécuter l’app en local avec **RStudio**
 2. Décompressez l’archive dans le dossier de votre choix (par ex. `Documents/IntroPopDyn`).  
 3. Charger **IntroPopDyn.Rproj** dans le dossier décompressé.     
   
----
-## 1. Alternative avec Git: cloner le dépôt dans un projet RStudio
+
+### (Alternative avec Git : cloner le dépôt dans un projet RStudio)
 
 1. Installation de **Git** – nécessaire pour cloner le dépôt depuis RStudio  
    * Windows : <https://git-scm.com/download/win>  
@@ -37,7 +37,7 @@ Suivez les étapes ci‑dessous pour exécuter l’app en local avec **RStudio**
 
 ## 2. Lancer une des applications
 
-Directment ans l’onglet **Console** ou dans un nouveau **Script**:
+Directement dans l’onglet **Console** ou dans un nouveau **Script**:
 
 ```r
 # pour la version “flux constants”
