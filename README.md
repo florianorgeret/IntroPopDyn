@@ -41,8 +41,10 @@ Directement dans l’onglet **Console** ou dans un nouveau **Script**:
 
 ```r
 # pour la version “flux constants”
-shiny::runApp("1_bide_flux_constant.R")
+source("1_bide_flux_constant.R")
+```
 
+```r
 # pour la version “taux constants”
-shiny::runApp("2_bide_taux_constant.R")
+source("2_bide_taux_constant.R")
 ```
