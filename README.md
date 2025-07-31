@@ -31,7 +31,7 @@ Suivez les étapes ci‑dessous pour exécuter une app en local avec **RStudio**
 4. Dans **Repository URL**, collez :  
 
 ```console
-https://github.com/florianorgeret/IntroPopDyn`  
+https://github.com/florianorgeret/IntroPopDyn 
 ```
 
 5. Choisissez un dossier local puis **Create Project**.  
