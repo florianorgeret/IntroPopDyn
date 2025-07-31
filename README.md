@@ -37,16 +37,16 @@ Suivez les étapes ci‑dessous pour exécuter l’app en local avec **RStudio**
 
 ## 2. Lancer une des applications
 
-Directement dans l’onglet **Console** ou dans un nouveau **Script**:
+Directement dans l’onglet **Console** ou dans un nouveau **Script** et lancer les commandes avec `CTRL`+ `ENTER`:
 
 ```r
 # pour la version “flux constants”
-source("1_bide_flux_constant.R")
-shiny::runApp("1_bide_flux_constant.R")
+source("1_bide_flux_constant.R") #permet de vérifier l'installation des packages R nécessaires
+shiny::runApp("1_bide_flux_constant.R")#lance l'appli !
 ```
 
 ```r
 # pour la version “taux constants”
-source("2_bide_taux_constant.R")
-shiny::runApp("2_bide_taux_constant.R")
+source("2_bide_taux_constant.R") #permet de vérifier l'installation des packages R nécessaires
+shiny::runApp("2_bide_taux_constant.R") #lance l'appli !
 ```
