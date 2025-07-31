@@ -1,7 +1,5 @@
-# --------------------------------------------------------------------------
-#  Self-contained Shiny app
+##  Self-contained Shiny app
 #  → checks / installs required packages before launching
-# --------------------------------------------------------------------------
 pkgs_needed <- c("shiny", "highcharter", "magrittr",
                  "shinyanimate", "shinyjs", "rclipboard", "deSolve")
 to_install  <- setdiff(pkgs_needed, rownames(installed.packages()))
@@ -9,7 +7,7 @@ if (length(to_install))
   install.packages(to_install, repos = "https://cloud.r-project.org")
 lapply(pkgs_needed, require, character.only = TRUE)
 
-# -------------------- R code shown in the R Code tab ------------------------
+#  R code shown in the R Code tab 
 code_snippet <- "
 ## BIDE (per-capita rates) – DISCRETE version
 N0 <- 50
@@ -39,7 +37,6 @@ lines(out$time, out$N, col = 2, lty = 2)
 legend('topleft', bty='n', col=c(1,2), lty=c(1,2),
        legend=c('Discrete','Continuous (ODE)'))
 "
-# ---------------------------------------------------------------------------
 
 ui <- fluidPage(
   rclipboardSetup(), useShinyjs(), withAnim(),

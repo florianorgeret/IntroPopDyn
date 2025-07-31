@@ -1,6 +1,4 @@
-# --------------------------------------------------------------------------
 # Minimal dependency-check: install missing packages then load them
-# --------------------------------------------------------------------------
 pkgs_needed <- c("shiny", "highcharter", "magrittr",
                  "shinyanimate", "shinyjs", "rclipboard")
 
@@ -10,9 +8,7 @@ if (length(to_install))
 
 lapply(pkgs_needed, require, character.only = TRUE)
 
-# --------------------------------------------------------------------------
 #  BIDE • flux constants • Shiny app
-# --------------------------------------------------------------------------
 
 code_snippet <- "
 ## BIDE ultra-simple (flux constants, temps discret)
