@@ -1,5 +1,3 @@
-## Shiny app: BIDE per-capita rates with discrete vs continuous, optional ODE animation, optional log scale,
-## French help (with requested text) and R code snippet including plots and log10 transform
 pkgs <- c("shiny","highcharter","magrittr","shinyjs",
           "shinyanimate","rclipboard","deSolve")
 need <- setdiff(pkgs, rownames(installed.packages()))

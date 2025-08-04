@@ -1,4 +1,3 @@
-## Self-contained Shiny app for constant-flux BIDE with dashed discrete curve, thicker line and bigger points
 pkgs_needed <- c("shiny", "highcharter", "magrittr",
                  "shinyanimate", "shinyjs", "rclipboard")
 to_install <- setdiff(pkgs_needed, rownames(installed.packages()))
@@ -24,7 +23,6 @@ for (t in 1:tmax) {
 
 plot(0:tmax, N, type = 'l', lty = 3, lwd = 3,
      xlab = 'Time step', ylab = 'Population (N)')
-points(0:tmax, N, pch = 16, cex = 1.2)
 "
 
 ui <- fluidPage(
