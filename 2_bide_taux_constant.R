@@ -25,18 +25,20 @@ ode_fun <- function(t, state, parms){
   with(as.list(c(state, parms)), { dN <- r * N; list(dN) })
 }
 state <- c(N = N0)
-df_continuous <- ode(state, 0:tmax, ode_fun, parms = c(r = r)) |> as.data.frame()
+df_continuous <- ode(state, 0:tmax, ode_fun, parms = c(r = r)) 
+df_continuous <- as.data.frame(df_continuous)
 df_continuous$N_round <- round(df_continuous$N)  # display as whole numbers
 
-## extra step: log10 transform (on real-valued N)
-df_discrete$log10N   <- log10(df_discrete$N)
-df_continuous$log10N <- log10(df_continuous$N)
-
-## Plot linear (rounded values for readability)
+## Plot linear (rounded values for display)
 plot(df_discrete$time, df_discrete$N_round, type='l', lty=3, xlab='Time step', ylab='Population (N)',
      main=sprintf('r=%.3f', r))
 lines(df_continuous$time, df_continuous$N_round, lty=1)
 legend('topleft', bty='n', lty=c(3,1), legend=c('Discrete','Continuous (ODE)'))
+
+
+## extra step: log10 transform (on real-valued N, otherwise we'll get an error in case of N=0)
+df_discrete$log10N   <- log10(df_discrete$N)
+df_continuous$log10N <- log10(df_continuous$N)
 
 ## Plot log10 (use real-valued N)
 plot(df_discrete$time, df_discrete$log10N, type='l', lty=3, xlab='Time step', ylab='log10(N)',
