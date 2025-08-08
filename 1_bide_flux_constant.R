@@ -21,6 +21,8 @@ for (t in 1:tmax) {
   N[t + 1] <- N[t] + B + I - D - E
 }
 
+N <- round(N) # round to whole individuals for display (we cannot have fractions of individuals)
+
 plot(0:tmax, N, type = 'l', lty = 3, lwd = 3,
      xlab = 'Time step', ylab = 'Population (N)')
 "
@@ -91,12 +93,14 @@ server <- function(input, output, session){
     N <- numeric(input$tmax + 1)
     N[1] <- input$N0
     for (t in 1:input$tmax)
-      N[t + 1] <- N[t] + input$B + input$I - input$D - input$E
-    df <- data.frame(time = 0:input$tmax, N = N)
     
-    updateSliderInput(session, "time_slider",
+      N[t + 1] <- N[t] + input$B + input$I - input$D - input$E
+    
+      df <- data.frame(time = 0:input$tmax, N = round(N))
+    
+      updateSliderInput(session, "time_slider",
                       value = 0, min = 0, max = input$tmax)
-    runjs("setTimeout(function(){
+      runjs("setTimeout(function(){
              var b=document.querySelector('.slider-animate-button');
              if(b) b.click();
            }, 400);")
