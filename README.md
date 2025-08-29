@@ -4,12 +4,10 @@ Ce dépôt contient des applications **Shiny** d’introduction à la dynamique 
 Suivez les étapes ci‑dessous pour exécuter une app en local avec **RStudio**.
 
 ---
-
 ## 0. Prérequis
 
 1. Installer **R** (version ≥ 4.3.3 impératif) → <https://cran.r-project.org>  
 2. Installer **RStudio Desktop** (dernière version 2025.05.1+513 recommandée) → <https://posit.co/download/rstudio-desktop/>
-
 ---
 
 ## 1. Télécharger l’archive ZIP du dépot (*repository*)
