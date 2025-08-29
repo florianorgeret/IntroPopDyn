@@ -7,8 +7,8 @@ Suivez les étapes ci‑dessous pour exécuter une app en local avec **RStudio**
 
 ## 0. Prérequis
 
-1. Installer **R** (≥ 4.3.3) → <https://cran.r-project.org>  
-2. Installer **RStudio Desktop** → <https://posit.co/download/rstudio-desktop/>
+1. Installer **R** (version ≥ 4.3.3 impératif) → <https://cran.r-project.org>  
+2. Installer **RStudio Desktop** (dernière version 2025.05.1+513 recommandée) → <https://posit.co/download/rstudio-desktop/>
 
 ---
 
@@ -18,26 +18,6 @@ Suivez les étapes ci‑dessous pour exécuter une app en local avec **RStudio**
 2. Cliquez sur le bouton vert **\<\> Code** (en haut à droite) puis cliquer sur **Download ZIP**.  
 2. Décompressez l’archive dans le dossier de votre choix (par ex. `Documents/IntroPopDyn`).  
 3. Charger **IntroPopDyn.Rproj** dans le dossier décompressé.     
-  
-
-### (Alternative avec Git : cloner directement le dépôt dans un projet RStudio)
-
-1. Installation de **Git** – nécessaire pour cloner le dépôt depuis RStudio  
-   * Windows : <https://git-scm.com/download/win>  
-   * macOS  : `brew install git` ou installeur <https://git-scm.com/download/mac>  
-   * Linux : gestionnaire de paquets (ex. `sudo apt install git`)
-2. *File ▸ New Project…*  
-3. *Version Control ▸ Git*  
-4. Dans **Repository URL**, collez :  
-
-```console
-https://github.com/florianorgeret/IntroPopDyn 
-```
-
-5. Choisissez un dossier local puis **Create Project**.  
-6. RStudio ouvre automatiquement le projet.
-
----
 
 ## 2. Lancer une des applications
 
@@ -54,3 +34,7 @@ shiny::runApp("1_bide_flux_constant.R")#lance l'appli !
 source("2_bide_taux_constant.R") #permet de vérifier l'installation des packages R nécessaires
 shiny::runApp("2_bide_taux_constant.R") #lance l'appli !
 ```
+## 3. Attention !
+
+RStudio va ouvrir une nouvelle fenetre Shiny avec l'appli mais si appuyer sur le bouton "Run Simulation" ne déclenche rien, essayer de l'ouvrir 
+dans votre navigateur internet, en cliquant sur "Open in Browser" en haut de l'appli (logo avec une petite flèche et fenêtre).
