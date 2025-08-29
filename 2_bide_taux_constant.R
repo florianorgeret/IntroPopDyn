@@ -1,7 +1,7 @@
-pkgs <- c("shiny","highcharter","magrittr","shinyjs","shinyanimate","rclipboard","deSolve")
-need <- setdiff(pkgs, rownames(installed.packages()))
-if(length(need)) install.packages(need, repos="https://cloud.r-project.org")
-lapply(pkgs, require, character.only = TRUE)
+pkgs <- c("shiny","highcharter","magrittr","shinyanimate","shinyjs","rclipboard","deSolve")
+if (!requireNamespace("pak", quietly = TRUE)) install.packages("pak", repos = "https://cloud.r-project.org")
+pak::pkg_install(pkgs)         # hard deps uniquement
+invisible(lapply(pkgs, require, character.only = TRUE))
 
 ## R Code shown in the “R Code” tab (uses natural log)
 code_snippet <- "

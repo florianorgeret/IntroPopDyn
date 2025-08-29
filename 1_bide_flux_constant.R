@@ -1,9 +1,7 @@
-pkgs_needed <- c("shiny", "highcharter", "magrittr",
-                 "shinyanimate", "shinyjs", "rclipboard")
-to_install <- setdiff(pkgs_needed, rownames(installed.packages()))
-if (length(to_install))
-  install.packages(to_install, repos = "https://cloud.r-project.org")
-lapply(pkgs_needed, require, character.only = TRUE)
+pkgs <- c("shiny","highcharter","magrittr","shinyanimate","shinyjs","rclipboard","deSolve")
+if (!requireNamespace("pak", quietly = TRUE)) install.packages("pak", repos = "https://cloud.r-project.org")
+pak::pkg_install(pkgs)         # hard deps uniquement
+invisible(lapply(pkgs, require, character.only = TRUE))
 
 code_snippet <- "
 ## BIDE ultra-simple (flux constants, temps discret)
