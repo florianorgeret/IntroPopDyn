@@ -17,8 +17,8 @@ Suivez les étapes ci‑dessous pour exécuter une app en local avec **RStudio**
 2. Décompressez l’archive dans le dossier de votre choix (par ex. `Documents/IntroPopDyn`).  
 3. Dans ce dossier, double cliquer sur **IntroPopDyn.Rproj** pour lancer RStudio avec ce projet
 4. Verifier que le chemin par default dans R est bien ce dossier :
-  - il est indiqué juste en dessous de l'onglet Console, en bas dans RStudio
-  - vous pouvez aussi lancer `gtwd` (**get working directory**) directement dans la Console
+    - il est indiqué juste en dessous de l'onglet Console, en bas dans RStudio
+    - vous pouvez aussi lancer `gtwd()` (*get working directory*) directement dans la Console
 
 ## 2. Lancer une des applications
 
