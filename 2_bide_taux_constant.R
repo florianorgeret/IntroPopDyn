@@ -145,16 +145,19 @@ server <- function(input, output, session){
   
   output$popChart <- renderHighchart({
     req(traj())
-    ln_mode  <- isTRUE(input$ln_scale)
-    y_title  <- if (ln_mode) "ln(N)" else "Population (N)"
-    blue     <- "#1f77b4"
-    r_val    <- traj()$r
+    ln_mode   <- isTRUE(input$ln_scale)
+    show_cont <- isTRUE(input$animate_cont)
+    y_title   <- if (ln_mode) "ln(N)" else "Population (N)"
+    blue      <- "#1f77b4"
+    r_val     <- traj()$r
     
-    ## Scaling values
+    ## === SCALING decided ON RUN only: use full trajectories of what is visible ===
     all_vals <- if (ln_mode) {
-      c(traj()$discrete$lnN, traj()$continuous$lnN)
+      c(traj()$discrete$lnN,
+        if (show_cont) traj()$continuous$lnN else numeric(0))
     } else {
-      c(traj()$discrete$N_round, traj()$continuous$N_round)
+      c(traj()$discrete$N_round,
+        if (show_cont) traj()$continuous$N_round else numeric(0))
     }
     finite_vals <- all_vals[is.finite(all_vals)]
     if (!length(finite_vals)) {
@@ -272,7 +275,7 @@ server <- function(input, output, session){
       ) %>% invisible()
   }
   
-  ## On RUN: reset slider; if ln ON at click, draw triangle after flush; start animation
+  ## On RUN: set axis (via renderHighchart), reset slider; if ln ON at click, draw triangle; start animation
   observeEvent(input$run, {
     updateSliderInput(session,"time_slider", value=0, min=0, max=input$tmax)
     highchartProxy("popChart") %>%
@@ -294,3 +297,4 @@ server <- function(input, output, session){
 }
 
 shinyApp(ui, server)
+
