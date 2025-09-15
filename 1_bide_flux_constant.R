@@ -6,10 +6,10 @@ invisible(lapply(pkgs, require, character.only = TRUE))
 code_snippet <- "
 ## BIDE ultra-simple (flux constants, temps discret)
 N0 <- 50  # initial population
-B  <- 5   # births per step
-I  <- 0   # immigration
-D  <- 2   # deaths
-E  <- 0   # emigration
+B  <- 0   # births per step
+I  <- 5   # immigration
+D  <- 0   # deaths
+E  <- 2   # emigration
 
 tmax <- 20
 N <- numeric(tmax + 1)
@@ -34,10 +34,10 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       sliderInput("N0", "Initial Population (N₀)", 0, 500, 50),
-      sliderInput("B",  "Births per step (B)", 0, 20, 5),
-      sliderInput("I",  "Immigration per step (I)", 0, 20, 0),
-      sliderInput("D",  "Deaths per step (D)", 0, 20, 2),
-      sliderInput("E",  "Emigration per step (E)", 0, 20, 0),
+      sliderInput("B",  "Births per step (B)", 0, 20, 0),
+      sliderInput("I",  "Immigration per step (I)", 0, 20, 5),
+      sliderInput("D",  "Deaths per step (D)", 0, 20, 0),
+      sliderInput("E",  "Emigration per step (E)", 0, 20, 2),
       sliderInput("tmax", "Number of steps", 1, 200, 20),
       tags$div(style = "text-align:center; margin:20px 0;",
                actionButton("run", "Run Simulation")),
