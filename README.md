@@ -16,25 +16,56 @@ Suivez les étapes ci‑dessous pour exécuter une app en local avec **RStudio**
 2. Cliquez sur le bouton vert **\<\> Code** (en haut à droite) puis cliquer sur **Download ZIP**.  
 2. Décompressez l’archive dans le dossier de votre choix (par ex. `Documents/IntroPopDyn`).  
 3. Dans ce dossier, double cliquer sur **IntroPopDyn.Rproj** pour lancer RStudio avec ce projet
-4. Verifier que le chemin par default dans R est bien ce dossier :
+4. Vérifier que le chemin par défault dans R est bien ce dossier :
     - il est indiqué juste en dessous de l'onglet Console, en bas dans RStudio
     - vous pouvez aussi lancer `gtwd()` (*get working directory*) directement dans la Console
 
 ## 2. Lancer une des applications
 
-Directement dans l’onglet **Console** (ou dans un nouveau **Script** en lançant les commandes avec `CTRL`+ `ENTER`):
+### 1. Version "Flux constants"
+
+Directement dans la **Console** copier 
 
 ```r
-# pour la version “flux constants”
 source("1_bide_flux_constant.R") # permet de vérifier l'installation des packages R nécessaires
-shiny::runApp("1_bide_flux_constant.R")# lance l'appli !
+```
+Puis appuyer sur "Entrée".
+
+Une liste de packages va s'installer, cela peut prendre quelques minutes la première fois.
+
+Il se peut que la console vous demander de continuer avec posant une question à choix Y/N, taper Y dans la Console, puis "Entrée".
+
+/!\
+Normalement il ne devrait pas y avoir d'erreurs, sinon essayez d'installer la dernière version de [RTools](https://cran.r-project.org/bin/windows/Rtools/) 
+Puis essayer encore d'installer les packages. Si une erreur persiste, essaye de la comprendre, et de voir quel package ne s'installe pas correctement (i.e. demandez a google)
+/!\
+
+Une fois les packages installés, copier :
+
+```r
+shiny::runApp("1_bide_flux_constant.R") # lance l'appli !
 ```
 
+puis taper entrée. L'application devrait se lancer !
+
+### 2. Version "Taux constants"
+
+Idem pour cette version, toujours dans la console, copier la ligne suivante puis lancer la en tapant "Entrée" :
+
 ```r
-# pour la version “taux constants”
 source("2_bide_taux_constant.R") # permet de vérifier l'installation des packages R nécessaires
+```
+
+Normalement ca devrait être beaucoup plus rapide, si cela a fonctionner pour la première application
+
+et ensuite, toujours dans la console copier cette ligne puis lancer en tapant "Entrée" :
+
+```r
 shiny::runApp("2_bide_taux_constant.R") # lance l'appli !
 ```
+
+La deuxième app, pour le deuxième exercice devrait s'ouvrir !
+
 ## 3. Attention !
 
 RStudio va ouvrir une nouvelle fenêtre Shiny avec l'appli mais si appuyer sur le bouton "Run Simulation" ne déclenche rien, essayer de l'ouvrir 
