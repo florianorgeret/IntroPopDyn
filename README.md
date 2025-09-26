@@ -35,15 +35,14 @@ Une liste de packages va s'installer, cela peut prendre quelques minutes la prem
 
 Il se peut que la console vous demander de continuer avec posant une question à choix Y/N, taper Y dans la Console, puis "Entrée".
 
-/!\
-Normalement il ne devrait pas y avoir d'erreurs, sinon essayez d'installer la dernière version de [RTools](https://cran.r-project.org/bin/windows/Rtools/) 
-Puis essayer encore d'installer les packages. Si une erreur persiste, essaye de la comprendre, et de voir quel package ne s'installe pas correctement (i.e. demandez a google)
-/!\
+*ATTENTION !*
+*Normalement il ne devrait pas y avoir d'erreurs, sinon essayez d'installer la dernière version de* [RTools](https://cran.r-project.org/bin/windows/Rtools/) 
+*Puis essayer encore d'installer les packages. Si une erreur persiste, essaye de la comprendre, et de voir quel package ne s'installe pas correctement (i.e. demandez a google)*
 
 Une fois les packages installés, copier :
 
 ```r
-shiny::runApp("1_bide_flux_constant.R") # lance l'appli !
+shiny::runApp("1_bide_flux_constant.R")
 ```
 
 puis taper entrée. L'application devrait se lancer !
@@ -53,7 +52,7 @@ puis taper entrée. L'application devrait se lancer !
 Idem pour cette version, toujours dans la console, copier la ligne suivante puis lancer la en tapant "Entrée" :
 
 ```r
-source("2_bide_taux_constant.R") # permet de vérifier l'installation des packages R nécessaires
+source("2_bide_taux_constant.R")
 ```
 
 Normalement ca devrait être beaucoup plus rapide, si cela a fonctionner pour la première application
@@ -61,7 +60,7 @@ Normalement ca devrait être beaucoup plus rapide, si cela a fonctionner pour la
 et ensuite, toujours dans la console copier cette ligne puis lancer en tapant "Entrée" :
 
 ```r
-shiny::runApp("2_bide_taux_constant.R") # lance l'appli !
+shiny::runApp("2_bide_taux_constant.R")
 ```
 
 La deuxième app, pour le deuxième exercice devrait s'ouvrir !
